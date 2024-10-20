@@ -5,11 +5,12 @@ const authSlice = createSlice({
     name: 'user',
     initialState:{
         userInfo: null,
+        users: [],
         isLoggedIn : false,
     },
     reducers:{
         register: (state, action) => {
-            state.userInfo = action.payload;
+            state.users.push(action.payload);
             state.isLoggedIn = false
         },
         login:(state, action) => {

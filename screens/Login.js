@@ -20,12 +20,15 @@ const Login = () => {
        const handleLogin = async () => {
               try {
                      const storedUser = await getUserFromLocalStorage();
-                     if(storedUser && storedUser.email === email && storedUser.password === password){
-                            dispatch(login(storedUser));
+                     console.log(storedUser)
+                     const foundUser = storedUser.find(user => user.email === email && user.password === password);
+                     
+                     if(foundUser) {
+                            dispatch(login(foundUser));
                             navigation.navigate('Dashboard');
-                     } else {
+                     }else{
                             Alert.alert('Error', 'Invalid Email or Password');
-                          }
+                     }
               } catch (error) {
                      console.log('Error:', error);
                      Alert.alert('Error', 'Something went wrong');

@@ -18,10 +18,10 @@ const Register = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-const handleRegister = () => {
+const handleRegister = async () => {
        const userData = {email, password};
        dispatch(register(userData));
-       saveUserToLocalStorage(userData);
+       await saveUserToLocalStorage(userData);
        navigation.navigate('Login');
 }
 
